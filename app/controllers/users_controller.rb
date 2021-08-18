@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in
+  before_action :require_user_logged_in, only: [:edit, :show, :update, :destroy]
 
   def create
     @user = User.new(user_params)
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user =User.new
+    @user = User.new
   end
 
   def edit
