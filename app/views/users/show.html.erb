@@ -10,10 +10,7 @@
     </div>
   </aside>
   <div class="col-sm-8">
-    <ul class="nav nav-tabs nav-justified mb-3">
-      <li class="nav-item"><a href="#" class="nav-link">Tasks</a></li>
-    </ul>
+    <%= link_to "change your information", edit_user_path, class: 'btn btn-warning btn-sm'%><br>
+    <%= link_to "Delete your account", @user, method: :delete, data: { confirm: "Are you sure to delete your account?"} , class: 'btn btn-danger btn-sm'%>
   </div>
 </div>
-<%= link_to "change your information", edit_user_path %><br>
-<%= link_to "Delete your account", @user, method: :delete, data: { confirm: "Are you sure to delete your account?"} %>

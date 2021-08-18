@@ -12,4 +12,6 @@ class User < ApplicationRecord
                     
     #パスワード付きモデル使用時のセキュリティ用コード
     has_secure_password
+    
+    has_many :tasks
 end

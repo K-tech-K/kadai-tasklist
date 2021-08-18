@@ -1,9 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :show]
-  
-  def index
-    @pagy, @users = pagy(User.order(id: :desc), items: 25)
-  end
+  before_action :require_user_logged_in
 
   def create
     @user = User.new(user_params)
@@ -46,7 +42,7 @@ class UsersController < ApplicationController
     @user.destroy
     
     flash[:success] = "ユーザーは正常に削除されました"
-    redirect_to users_url
+    redirect_to root_url
   end
   
   

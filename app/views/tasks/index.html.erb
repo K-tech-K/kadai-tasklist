@@ -1,0 +1,35 @@
+<% if logged_in? %>
+    <h1>All Tasks</h1>
+    <% if @tasks.any? %>
+      <ul class="list-unstyled mt-2">
+        <% @tasks.each do |task| %>
+          <li class="d-flex">
+            <img class="rounded me-2 mb-5" src="<%= gravatar_url(task.user, { size: 104 }) %>" alt="">
+            <div>
+              <div>
+                <%= link_to task.user.name, user_path(task.user), class: "text-decoration-none" %> <span class="text-muted">posted at <%= task.created_at %></span>
+              </div>
+              <div>
+                <%= task.content %><br>status>><%= task.status %>
+              </div>
+              <div class="btn-toolbar" role="toolbar">
+                <div class="btn-group" role="group">
+                  <div>
+                    <% if current_user == task.user %>
+                      <%= link_to "Edit", edit_task_path(task), class: 'btn btn-warning btn-sm' %>
+                    <% end %>
+                  </div>
+                  <div>
+                    <% if current_user == task.user %>
+                      <%= link_to "Delete", task, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+      <%== pagy_bootstrap_nav(@pagy) %>
+    <% end %>
+<% end %>
