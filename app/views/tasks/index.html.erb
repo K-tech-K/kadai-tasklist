@@ -4,10 +4,9 @@
       <ul class="list-unstyled mt-2">
         <% @tasks.each do |task| %>
           <li class="d-flex">
-            <img class="rounded me-2 mb-5" src="<%= gravatar_url(task.user, { size: 104 }) %>" alt="">
             <div>
               <div>
-                <%= link_to task.user.name, user_path(task.user), class: "text-decoration-none" %> <span class="text-muted">posted at <%= task.created_at %></span>
+                <%= link_to "No."+task.id.to_s, task, class: "text-decoration-none" %> <span class="text-muted">posted at <%= task.created_at %></span>
               </div>
               <div>
                 <%= task.content %><br>status>><%= task.status %>

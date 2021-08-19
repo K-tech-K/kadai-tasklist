@@ -1,0 +1,15 @@
+<h1>Detail of Task No.<%= @task.id %></h1>
+
+<h2>Task</h2>
+<p><%= @task.content %></p>
+
+<h2>Status</h2>
+<p><%= @task.status %></p>
+
+<% if current_user == @task.user %>
+    <%= link_to "Edit", edit_task_path(@task), class: 'btn btn-warning btn-sm' %>
+<% end %>
+
+<% if current_user == @task.user %>
+    <%= link_to "Delete", @task, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+<% end %>
